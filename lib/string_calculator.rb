@@ -1,16 +1,36 @@
 class StringCalculator
-  def self.add(input)
-    return 0 if input.empty?
-    numbers = input.split(',').map(&:to_i)
-    numbers.inject(0) { |sum, number| sum + number }
-  end
+  class << self
+    def add(input)
+      return 0 if input.empty?
+      numbers = input.split(',').map(&:to_i)
+      return numbers.first.to_i if numbers.size == 1
 
-  def self.subt(input)
-    return 0 if input.empty?
+      numbers.inject(0) { |sum, number| sum + number }
+    end
 
-    numbers = input.split(',').map(&:to_i)
-    return numbers.first.to_i if numbers.size == 1
+    def subt(input)
+      return 0 if input.empty?
+      numbers = input.split(',').map(&:to_i)
+      return numbers.first.to_i if numbers.size == 1
 
-    numbers.inject { |subt, number| subt - number }
+      numbers.inject { |subt, number| subt - number }
+    end
+
+    def mult(input)
+      return 0 if input.empty?
+      numbers = input.split(',').map(&:to_i)
+      return numbers.first.to_i if numbers.size == 1
+
+      numbers.inject { |subt, number| subt * number }
+    end
+
+    def divis(input)
+      return 0 if input.empty?
+      numbers = input.split(',').map(&:to_f)
+      return numbers.first.to_i if numbers.size == 1
+
+      result = numbers.inject { |subt, number| subt / number }
+      result == result.to_i ? result.to_i : result.floor(3)
+    end
   end
 end
