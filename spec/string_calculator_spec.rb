@@ -20,6 +20,12 @@ describe StringCalculator do
         it { expect(StringCalculator.add('17,100')).to eql 117 }
       end
     end
+
+    context 'three numbers' do
+      context 'take only two first' do
+        it { expect(StringCalculator.add('2, 3, 7')).to eql 5 }
+      end
+    end
   end
 
   describe '.subt' do
@@ -52,6 +58,12 @@ describe StringCalculator do
         it { expect(StringCalculator.subt('7,7')).to eql 0 }
       end
     end
+
+    context 'three numbers' do
+      context 'take only two first' do
+        it { expect(StringCalculator.subt('2, 3, 7')).to eql(-1) }
+      end
+    end
   end
 
   describe '.mult' do
@@ -70,6 +82,12 @@ describe StringCalculator do
 
       context 'given 17,100' do
         it { expect(StringCalculator.mult('17,100')).to eql 1700 }
+      end
+    end
+
+    context 'three numbers' do
+      context 'take only two first' do
+        it { expect(StringCalculator.mult('2, 3, 7')).to eql 6 }
       end
     end
   end
@@ -102,6 +120,12 @@ describe StringCalculator do
 
       context 'given 7,7' do
         it { expect(StringCalculator.divis('7,7')).to eql 1 }
+      end
+    end
+
+    context 'three numbers' do
+      context 'take only two first' do
+        it { expect(StringCalculator.divis('2, 3, 7')).to eql 0.666 } # ~(666
       end
     end
   end
